@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: raw
+    database: LEARNING_DB
+    schema: RAW
+    tables:
+      - name: yellow_trips_raw
+        description: "Silver-layer NYC Taxi data loaded from Databricks via Parquet"
+        columns:
+          - name: tpep_pickup_datetime
+            description: "Trip pickup timestamp"
+          - name: fare_amount
+            description: "Base meter fare in USD"
+          - name: total_amount
+            description: "Total charge including all fees"

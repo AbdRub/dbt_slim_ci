@@ -1,0 +1,74 @@
+# dbt
+target/
+logs/
+dbt_packages/
+dbt_project.yml.env
+*.dbt_project.yml.env
+
+# Python
+venv/
+.venv/
+ENV/
+env/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.egg-info/
+dist/
+build/
+.Python
+
+# IDE and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+secrets.yml
+credentials.json
+profile.yml
+
+# OS-specific files
+Thumbs.db
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+.ipynb_checkpoints/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editor backups
+*.bak
+*.backup
+*~
+
+# Node (if using any JS tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# dbt docs (optional - keep if you want to track)
+# site/
+
+# Any local development files
+local_dev.yml
