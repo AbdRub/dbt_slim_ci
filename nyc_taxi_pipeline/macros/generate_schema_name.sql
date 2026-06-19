@@ -1,14 +1,23 @@
 -- macros/generate_schema_name.sql
--- Overrides dbt's default schema naming which concatenates target+custom schema.
--- This macro uses the custom schema name exactly as defined in model configs,
--- falling back to the target schema when no custom schema is set.
-
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
-    {%- if custom_schema_name is none -%}
-        {{ target.schema }}
+    {%- if target.name == 'prod' -%}
+        {#- Production: use exact schema name as defined in dbt_project.yml -#}
+        {%- if custom_schema_name is none -%}
+            {{ target.schema }}
+        {%- else -%}
+            {{ custom_schema_name | trim | upper }}
+        {%- endif -%}
+
     {%- else -%}
-        {{ custom_schema_name | trim | upper }}
+        {#- Development / CI: always prefix with target.schema (DEV_ABDUL) -#}
+        {#- This keeps dev models isolated from production schemas -#}
+        {%- if custom_schema_name is none -%}
+            {{ target.schema }}
+        {%- else -%}
+            {{ target.schema }}_{{ custom_schema_name | trim | upper }}
+        {%- endif -%}
+
     {%- endif -%}
 
 {%- endmacro %}
