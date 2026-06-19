@@ -15,7 +15,8 @@ SELECT
     ROUND(
         100.0 * SUM(tip_amount) / NULLIF(SUM(fare_amount), 0),
         2
-    )                                                   AS tip_pct_of_fare
+    )                                                   AS tip_pct_of_fare,
+    ROUND(total_revenue / NULLIF(total_trips, 0), 2)    AS avg_revenue_per_trip
 FROM base
 GROUP BY payment_type_label
 ORDER BY total_trips DESC
